@@ -1,4 +1,4 @@
-# SDDB-project
+# Project
 
 ## Installation procedure
 
@@ -12,5 +12,3 @@
 4. Open script file create-database.sql and execute the file to create the database
 
 5. Open the application in the IDE of preference
-
-

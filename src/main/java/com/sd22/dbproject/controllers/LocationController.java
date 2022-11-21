@@ -1,0 +1,53 @@
+package com.sd22.dbproject.controllers;
+
+import com.sd22.dbproject.entities.Location;
+import com.sd22.dbproject.services.LocationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/locations")
+public class LocationController {
+    @Autowired
+    LocationService locationService;
+
+    //Get all locations
+    @GetMapping("/")
+    public ResponseEntity<List<Location>> getLocations() {
+        List<Location> locations = locationService.getLocations();
+        return new ResponseEntity<>(locations, HttpStatus.OK);
+    }
+
+    //Add a Location
+    @PostMapping("/add")
+    public ResponseEntity<Location> addLocation(@RequestBody Location location) {
+        Location newLocation = locationService.addLocation(location);
+        return new ResponseEntity<>(newLocation,HttpStatus.CREATED);
+    }
+
+    //Find location by id
+    @GetMapping("/{id}")
+    public ResponseEntity<Location> findLocationById(@PathVariable int id) {
+        Location location = locationService.findLocationById(id);
+        return new ResponseEntity<>(location, HttpStatus.OK);
+    }
+
+    //DELETE location by id
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Location> delete(@PathVariable("id") int id) {
+        locationService.deleteLocationById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    //PUT, update by id
+    @PutMapping("/update")
+    public ResponseEntity<Location> update(@RequestBody Location location) {
+        Location updateLocation = locationService.updateLocation(location);
+        return new ResponseEntity<>(updateLocation, HttpStatus.OK);
+    }
+}
