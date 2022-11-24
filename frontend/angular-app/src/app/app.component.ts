@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {Trip} from "./trip";
+import {TripService} from "./trip.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-app';
+  public trips: Trip[];
+
+  constructor(private tripService: TripService) {}
+
+  ngOnInit(){
+    this.getTrip();
+  }
+
+  public getTrip(): void {
+    this.tripService.getTrips().subscribe(
+    (response: Trip[])=> {
+      this.trips = response;
+    },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 }

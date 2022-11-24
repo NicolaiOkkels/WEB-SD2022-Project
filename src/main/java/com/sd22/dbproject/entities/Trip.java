@@ -1,10 +1,7 @@
 package com.sd22.dbproject.entities;
 
-import com.fasterxml.jackson.annotation.*;
-
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "trips")
@@ -15,21 +12,21 @@ public class Trip {
     private int tripId;
     private String description;
     private double price;
-    private String length;
+    private String duration;
     private String title;
-    private String availabilty;
+    private String availability;
     private Double ratingTotal;
 
     public Trip() {
     }
 
-    public Trip(String description, double price, String length, String title, String availabilty, Double ratingTotal,
-                Location location, TripPackage tripPackage, List<Review> reviews) {
+    public Trip(String description, double price, String duration, String title, String availability, Double ratingTotal,
+                Location location, List<Review> reviews) {
         this.description = description;
         this.price = price;
-        this.length = length;
+        this.duration = duration;
         this.title = title;
-        this.availabilty = availabilty;
+        this.availability = availability;
         this.ratingTotal = ratingTotal;
     }
 
@@ -57,12 +54,12 @@ public class Trip {
         this.price = price;
     }
 
-    public String getLength() {
-        return length;
+    public String getDuration() {
+        return duration;
     }
 
-    public void setLength(String length) {
-        this.length = length;
+    public void setDuration(String length) {
+        this.duration = length;
     }
 
     public String getTitle() {
@@ -73,12 +70,12 @@ public class Trip {
         this.title = title;
     }
 
-    public String getAvailabilty() {
-        return availabilty;
+    public String getAvailability() {
+        return availability;
     }
 
-    public void setAvailabilty(String availabilty) {
-        this.availabilty = availabilty;
+    public void setAvailability(String availabilty) {
+        this.availability = availabilty;
     }
 
     public Double getRatingTotal() {
@@ -95,9 +92,9 @@ public class Trip {
                 "tripId=" + tripId +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", length='" + length + '\'' +
+                ", length='" + duration + '\'' +
                 ", title='" + title + '\'' +
-                ", availabilty='" + availabilty + '\'' +
+                ", availabilty='" + availability + '\'' +
                 ", ratingTotal=" + ratingTotal +
                 '}';
     }
