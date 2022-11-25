@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS `WebSecurityDB`;
 
-CREATE DATABASE `mydb`;
-USE `mydb`;
+CREATE DATABASE `WebSecurityDB`;
+USE `WebSecurityDB`;
 SET NAMES utf8;
 SET SQL_SAFE_UPDATES = 0;
 
@@ -36,21 +36,21 @@ CREATE TABLE `trips` (
   `trip_id` INT NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(500) NOT NULL,
   `price` DECIMAL(9,2) NOT NULL,
-  `length` VARCHAR(255) NULL,
+  `duration` VARCHAR(255) NULL,
   `title` VARCHAR(255) NOT NULL,
-  `availabilty` VARCHAR(255) NOT NULL,
+  `availability` VARCHAR(255) NOT NULL,
   `rating_total` DECIMAL(2,1) NULL,
   `locations_location_id` INT NOT NULL,
   PRIMARY KEY (`trip_id`, `locations_location_id`),
   INDEX `fk_trips_locations1_idx` (`locations_location_id` ASC) VISIBLE,
-  CONSTRAINT `fk_trips_locations1` FOREIGN KEY (`locations_location_id`) REFERENCES `locations` (`location_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trips_locations1` FOREIGN KEY (`locations_location_id`) REFERENCES `locations` (`location_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT = 6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `trips` VALUES (1, 'tbd', 150.00, 'Between 1-2 hours', 'The little mermaid in Copenhagen', 'everyday', null , 4, 4);
-INSERT INTO `trips` VALUES (2, 'tbd', 75.00, 'Between 1-2 hours', 'The statue of liberty', 'everyday', null,1, 2);
-INSERT INTO `trips` VALUES (3, 'tbd', 0.00, '1 hour', 'Central Park', 'everyday', null ,1, 2);
-INSERT INTO `trips` VALUES (4, 'tbd', 200.00, 'Between 3-4 hours', 'Metropolitan Museum of Art', 'All days exept Wednesday, from 10-17 on weekdays & 10-21 Friday, Saturday', null, 1, 2);
-INSERT INTO `trips` VALUES (5, 'tbd', 299.99, 'Around 2 hours', 'Knossos archeologial site', 'Tuesday & Thursday between 10-21', null, 6, 3);
+INSERT INTO `trips` VALUES (1, 'tbd', 150.00, 'Between 1-2 hours', 'The little mermaid in Copenhagen', 'everyday', 4, 4);
+INSERT INTO `trips` VALUES (2, 'tbd', 75.00, 'Between 1-2 hours', 'The statue of liberty', 'everyday', 1, 2);
+INSERT INTO `trips` VALUES (3, 'tbd', 0.00, '1 hour', 'Central Park', 'everyday', 1, 2);
+INSERT INTO `trips` VALUES (4, 'tbd', 200.00, 'Between 3-4 hours', 'Metropolitan Museum of Art', 'All days exept Wednesday, from 10-17 on weekdays & 10-21 Friday, Saturday', 1, 2);
+INSERT INTO `trips` VALUES (5, 'tbd', 299.99, 'Around 2 hours', 'Knossos archeologial site', 'Tuesday & Thursday between 10-21', 6, 3);
 
 -- user should have a name for the reviews
 CREATE TABLE `users` (

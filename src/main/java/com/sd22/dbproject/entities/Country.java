@@ -14,8 +14,8 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int countryId;
     private String name;
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
-    private Set<Location> locations;
+    //@OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    //private Set<Location> locations;
 
     public Country() {
     }
@@ -23,7 +23,7 @@ public class Country {
     public Country(String name, Set<Location> locations) {
         this.countryId = countryId;
         this.name = name;
-        this.locations = locations;
+        //this.locations = locations;
     }
 
     public int getCountryId() {
@@ -42,6 +42,7 @@ public class Country {
         this.name = name;
     }
 
+/*
     public Set<Location> getLocations() {
         return locations;
     }
@@ -49,13 +50,15 @@ public class Country {
     public void setLocations(Set<Location> locations) {
         this.locations = locations;
     }
+*/
 
     @Override
     public String toString() {
         return "Country{" +
                 "countryId=" + countryId +
                 ", name='" + name + '\'' +
-                ", locations=" + locations +
+                ", locations=" + /* locations */
+                +
                 '}';
     }
 }

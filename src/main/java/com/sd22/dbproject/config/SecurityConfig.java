@@ -1,5 +1,5 @@
 package com.sd22.dbproject.config;
-
+/*
 import com.sd22.dbproject.services.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,12 +10,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+*/
 
-@Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
+//@Configuration
+//@EnableWebSecurity
+//@EnableMethodSecurity
 public class SecurityConfig {
-
+/*
     @Autowired
     private MyUserDetailsService myUserDetailsService;
 
@@ -38,5 +39,5 @@ public class SecurityConfig {
     PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance(); //For testing
         //return new BCryptPasswordEncoder(); //TODO: encode password
-    }
+    }*/
 }

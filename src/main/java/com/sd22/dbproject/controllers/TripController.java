@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/trips")
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TripController {
 
     @Autowired
