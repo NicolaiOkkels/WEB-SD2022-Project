@@ -1,4 +1,5 @@
 package com.sd22.dbproject.entities;
+/*
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -54,3 +55,4 @@ public class MyUserDetails implements UserDetails {
         return true;
     }
 }
+*/

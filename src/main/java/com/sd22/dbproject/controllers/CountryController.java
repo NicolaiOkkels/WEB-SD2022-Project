@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/countries")
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CountryController {
     @Autowired
     private CountryService countryService;

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/locations")
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LocationController {
     @Autowired
     LocationService locationService;

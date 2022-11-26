@@ -1,5 +1,6 @@
 package com.sd22.dbproject.services;
 
+import com.sd22.dbproject.entities.Location;
 import com.sd22.dbproject.entities.Trip;
 import com.sd22.dbproject.repositories.TripRepository;
 import com.sd22.dbproject.services.exceptions.NotFoundException;

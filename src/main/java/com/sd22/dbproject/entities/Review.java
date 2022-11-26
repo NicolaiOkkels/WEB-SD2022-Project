@@ -1,37 +1,49 @@
 package com.sd22.dbproject.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name ="reviews")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reviewId;
+    private int id;
     private String title;
     private int rating;
     private Date visitDate;
     private String text;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference("review_user")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference("review_trip")
+    private Trip trip;
+
     public Review() {
     }
 
-    public Review(String title, int rating, Date visitDate, String text) {
+    public Review(String title, int rating, Date visitDate, String text, User user, Trip trip) {
         this.title = title;
         this.rating = rating;
         this.visitDate = visitDate;
         this.text = text;
+        this.user = user;
+        this.trip = trip;
     }
 
-    public int getReviewId() {
-        return reviewId;
+    public int getId() {
+        return id;
     }
 
-    public void setReviewId(int reviewId) {
-        this.reviewId = reviewId;
+    public void setId(int reviewId) {
+        this.id = reviewId;
     }
 
     public String getTitle() {
@@ -66,10 +78,26 @@ public class Review {
         this.text = text;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
+    }
+
     @Override
     public String toString() {
         return "Review{" +
-                "reviewId=" + reviewId +
+                "reviewId=" + id +
                 ", title='" + title + '\'' +
                 ", rating=" + rating +
                 ", visitDate=" + visitDate +

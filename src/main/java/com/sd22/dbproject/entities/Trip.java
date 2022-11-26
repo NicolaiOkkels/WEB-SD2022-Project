@@ -1,44 +1,66 @@
 package com.sd22.dbproject.entities;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "trips")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Trip {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int tripId;
+    private int id;
+
     private String description;
-    private double price;
-    private String length;
+    private BigDecimal price;
+    private String duration;
     private String title;
-    private String availabilty;
-    private Double ratingTotal;
+    private String availability;
+    private BigDecimal ratingTotal;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Location location;
+
+    @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Review> reviews;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "trip_tags",
+            joinColumns = @JoinColumn(name = "trip_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private Set<Tag> tags;
 
     public Trip() {
     }
 
-    public Trip(String description, double price, String length, String title, String availabilty, Double ratingTotal,
-                Location location, TripPackage tripPackage, List<Review> reviews) {
+    public Trip(String description, BigDecimal price, String duration, String title, String availability, BigDecimal ratingTotal,
+                Location location, List<Review> reviews, Set<Tag> tags) {
         this.description = description;
         this.price = price;
-        this.length = length;
+        this.duration = duration;
         this.title = title;
-        this.availabilty = availabilty;
+        this.availability = availability;
         this.ratingTotal = ratingTotal;
+        this.location = location;
+        this.reviews = reviews;
+        this.tags = tags;
     }
 
-    public int getTripId() {
-        return tripId;
+    public int getId() {
+        return id;
     }
 
-    public void setTripId(int tripId) {
-        this.tripId = tripId;
+    public void setId(int tripId) {
+        this.id = tripId;
     }
 
     public String getDescription() {
@@ -49,20 +71,20 @@ public class Trip {
         this.description = description;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public String getLength() {
-        return length;
+    public String getDuration() {
+        return duration;
     }
 
-    public void setLength(String length) {
-        this.length = length;
+    public void setDuration(String length) {
+        this.duration = length;
     }
 
     public String getTitle() {
@@ -73,31 +95,55 @@ public class Trip {
         this.title = title;
     }
 
-    public String getAvailabilty() {
-        return availabilty;
+    public String getAvailability() {
+        return availability;
     }
 
-    public void setAvailabilty(String availabilty) {
-        this.availabilty = availabilty;
+    public void setAvailability(String availabilty) {
+        this.availability = availabilty;
     }
 
-    public Double getRatingTotal() {
+    public BigDecimal getRatingTotal() {
         return ratingTotal;
     }
 
-    public void setRatingTotal(Double ratingTotal) {
+    public void setRatingTotal(BigDecimal ratingTotal) {
         this.ratingTotal = ratingTotal;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 
     @Override
     public String toString() {
         return "Trip{" +
-                "tripId=" + tripId +
+                "tripId=" + id +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", length='" + length + '\'' +
+                ", length='" + duration + '\'' +
                 ", title='" + title + '\'' +
-                ", availabilty='" + availabilty + '\'' +
+                ", availabilty='" + availability + '\'' +
                 ", ratingTotal=" + ratingTotal +
                 '}';
     }

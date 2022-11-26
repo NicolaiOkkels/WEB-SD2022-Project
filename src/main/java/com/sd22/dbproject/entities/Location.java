@@ -1,34 +1,44 @@
 package com.sd22.dbproject.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import javax.persistence.*;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name ="locations")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int locationId;
+    private int id;
     private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Country country;
+
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Trip> trips;
 
     public Location() {
     }
 
-    public Location(int locationId, String name, Country country) {
-        this.locationId = locationId;
+    public Location(String name, Country country, List<Trip> trips) {
         this.name = name;
+        this.country = country;
+        this.trips = trips;
     }
 
-    public int getLocationId() {
-        return locationId;
+    public int getId() {
+        return id;
     }
 
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
+    public void setId(int locationId) {
+        this.id = locationId;
     }
 
     public String getName() {
@@ -39,10 +49,26 @@ public class Location {
         this.name = name;
     }
 
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public List<Trip> getTrips() {
+        return trips;
+    }
+
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
+    }
+
     @Override
     public String toString() {
         return "Location{" +
-                "locationId=" + locationId +
+                "locationId=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }

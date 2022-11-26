@@ -1,5 +1,5 @@
 package com.sd22.dbproject.services;
-
+/*
 import com.sd22.dbproject.entities.MyUserDetails;
 import com.sd22.dbproject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +21,4 @@ public class MyUserDetailsService implements UserDetailsService {
                 .map(MyUserDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found" + username));
     }
-}
+}*/
