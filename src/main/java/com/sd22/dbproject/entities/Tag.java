@@ -17,7 +17,7 @@ public class Tag {
     private String name;
 
     @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference("tag_trips")
+    @JsonBackReference
     private List<Trip> trips;
 
     public Tag() {

@@ -18,11 +18,10 @@ public class Location {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference("location_country")
+    @JsonBackReference
     private Country country;
 
     @OneToMany(mappedBy = "location", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //@JsonManagedReference("location_trips")
     private List<Trip> trips;
 
     public Location() {

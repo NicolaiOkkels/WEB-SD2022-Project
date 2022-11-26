@@ -17,7 +17,6 @@ public class Country {
     private String name;
 
     @OneToMany(mappedBy = "country", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //@JsonManagedReference("country_locations")
     private Set<Location> locations;
 
     public Country() {

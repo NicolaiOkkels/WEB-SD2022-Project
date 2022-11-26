@@ -2,9 +2,9 @@ package com.sd22.dbproject.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -18,18 +18,17 @@ public class Trip {
     private int id;
 
     private String description;
-    private double price;
+    private BigDecimal price;
     private String duration;
     private String title;
     private String availability;
-    private Double ratingTotal;
+    private BigDecimal ratingTotal;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference("trip_location")
+    @JsonBackReference
     private Location location;
 
     @OneToMany(mappedBy = "trip", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference("trip_reviews")
     private List<Review> reviews;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -38,13 +37,12 @@ public class Trip {
             joinColumns = @JoinColumn(name = "trip_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    @JsonManagedReference("trip_tags")
     private Set<Tag> tags;
 
     public Trip() {
     }
 
-    public Trip(String description, double price, String duration, String title, String availability, Double ratingTotal,
+    public Trip(String description, BigDecimal price, String duration, String title, String availability, BigDecimal ratingTotal,
                 Location location, List<Review> reviews, Set<Tag> tags) {
         this.description = description;
         this.price = price;
@@ -73,11 +71,11 @@ public class Trip {
         this.description = description;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -105,11 +103,11 @@ public class Trip {
         this.availability = availabilty;
     }
 
-    public Double getRatingTotal() {
+    public BigDecimal getRatingTotal() {
         return ratingTotal;
     }
 
-    public void setRatingTotal(Double ratingTotal) {
+    public void setRatingTotal(BigDecimal ratingTotal) {
         this.ratingTotal = ratingTotal;
     }
 

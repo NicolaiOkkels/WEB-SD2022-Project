@@ -40,7 +40,7 @@ CREATE TABLE `trips` (
     `title` VARCHAR(255) NOT NULL,
     `availability` VARCHAR(255) NOT NULL,
     `rating_total` DECIMAL(2,1) NULL,
-    `location_id` INT NOT NULL,
+    `location_id` INT NULL,
     PRIMARY KEY (`id`),
     INDEX `fk_trips_locations_idx` (`location_id` ASC) VISIBLE,
     CONSTRAINT `fk_trips_locations` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION

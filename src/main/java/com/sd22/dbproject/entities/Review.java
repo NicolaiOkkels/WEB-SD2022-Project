@@ -22,7 +22,7 @@ public class Review {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference("review_trip")
+    @JsonBackReference
     private Trip trip;
 
     public Review() {
