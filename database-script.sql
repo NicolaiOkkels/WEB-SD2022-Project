@@ -53,7 +53,7 @@ INSERT INTO `trips` VALUES (4, 'tbd', 200.00, 'Between 3-4 hours', 'Metropolitan
 INSERT INTO `trips` VALUES (5, 'tbd', 299.99, 'Around 2 hours', 'Knossos archeologial site', 'Tuesday & Thursday between 10-21', 6, 3);
 
 CREATE TABLE `users` (
-    `id` INT NOT NULL,
+    `id` INT NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(255) NOT NULL,
     `password` VARCHAR(32) NOT NULL,
     `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,

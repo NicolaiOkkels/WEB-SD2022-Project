@@ -19,10 +19,11 @@ public class Review {
     private String text;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference("review_user")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference("review_trip")
     private Trip trip;
 
     public Review() {
