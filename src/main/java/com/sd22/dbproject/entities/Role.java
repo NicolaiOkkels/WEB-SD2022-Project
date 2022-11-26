@@ -1,13 +1,11 @@
 package com.sd22.dbproject.entities;
 
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "roles")
 public class Role {
     @Id
-    @Column(name = "role_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
@@ -17,7 +15,6 @@ public class Role {
     }
 
     public Role() {
-
     }
 
     public int getId() {
