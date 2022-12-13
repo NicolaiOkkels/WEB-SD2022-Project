@@ -1,4 +1,4 @@
-package com.sd22.dbproject.services.exceptions;
+package com.sd22.dbproject.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

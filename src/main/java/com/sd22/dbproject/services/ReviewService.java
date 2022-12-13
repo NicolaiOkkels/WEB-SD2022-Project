@@ -2,13 +2,12 @@ package com.sd22.dbproject.services;
 
 import com.sd22.dbproject.entities.Review;
 import com.sd22.dbproject.repositories.ReviewRepository;
-import com.sd22.dbproject.services.exceptions.NotFoundException;
+import com.sd22.dbproject.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ReviewService {
