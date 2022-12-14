@@ -13,10 +13,12 @@ import java.util.Set;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
     private int id;
     private String email;
     private String password;
+    private String name;
 
     @ManyToMany
     @JoinTable(
@@ -32,9 +34,19 @@ public class User {
     public User() {
     }
 
-    public User(String email, String password) {
+
+    public User(String email, String password, String name) {
         this.email = email;
         this.password = password;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Review> getReviews() {
@@ -80,9 +92,11 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + id +
-                ", email='" + email + '\'' +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", roles=" + roles +
+                ", reviews=" + reviews +
                 '}';
     }
 }
