@@ -55,7 +55,7 @@ INSERT INTO `trips` VALUES (5, 'tbd', 299.99, 'Around 2 hours', 'Knossos archeol
 CREATE TABLE `users` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `email` VARCHAR(255) NOT NULL,
-    `password` VARCHAR(32) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
     `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
@@ -128,11 +128,3 @@ INSERT INTO `tags` VALUES (5, 'Nature');
 INSERT INTO `tags` VALUES (6, 'City');
 INSERT INTO `tags` VALUES (7, 'Best seller');
 INSERT INTO `tags` VALUES (8, 'groups');
-
--->Insert into trip_tags after runtime, or the table is not created with jpa many to many mapping with join table</--
-/*INSERT INTO `trip_tags` VALUES (1, 1);
-INSERT INTO `trip_tags` VALUES (2, 1);
-INSERT INTO `trip_tags` VALUES (3, 5);
-INSERT INTO `trip_tags` VALUES (4, 5);
-INSERT INTO `trip_tags` VALUES (5, 3);
-INSERT INTO `trip_tags` VALUES (5, 2);*/

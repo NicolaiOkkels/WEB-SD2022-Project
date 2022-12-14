@@ -1,11 +1,2 @@
-<mat-menu #appMenu="matMenu">
-  <button mat-menu-item>Login</button>
-</mat-menu>
-
-<button mat-icon-button [matMenuTriggerFor]="appMenu">
-  <mat-icon>more_vert</mat-icon>
-</button>
-
-<div *ngFor="let trip of trips">
-<div>{{trip.title}}</div>
-</div>
+<!--<nav-bar></nav-bar>-->
+<router-outlet></router-outlet>
