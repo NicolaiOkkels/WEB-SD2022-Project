@@ -1,17 +1,14 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import {User} from "./user";
-import {UserService} from "./user.service";
-
+import {Component, OnInit} from '@angular/core';
+import {User} from "../user";
+import {UserService} from "../user.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.AdminComponent.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './administrator.component.html',
+  styleUrls: ['./administrator.component.css']
 })
-export class AdminComponent implements OnInit {
-
+export class AdministratorComponent implements OnInit{
   public users: User[] = [];
   public editUser: User | undefined;
   public deleteUser: User | undefined;
@@ -104,6 +101,4 @@ export class AdminComponent implements OnInit {
       this.getUsers();
     }
   }
-
 }
-

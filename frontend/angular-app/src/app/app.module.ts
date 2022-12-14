@@ -6,12 +6,14 @@ import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
-import {AdminComponent} from "./app.AdminComponent";
+/*import {AdminComponent} from "./app.AdminComponent";*/
+import {AdministratorComponent} from "./administrator/administrator.component";
 import {FormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
-    AppComponent,AdminComponent
+    AppComponent,AdministratorComponent
   ],
     imports: [
         BrowserModule,
@@ -23,6 +25,6 @@ import {FormsModule} from "@angular/forms";
         MatIconModule
     ],
   providers: [],
-  bootstrap: [AppComponent,AdminComponent]
+  bootstrap: [AdministratorComponent]
 })
 export class AppModule { }

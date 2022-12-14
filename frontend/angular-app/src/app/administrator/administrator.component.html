@@ -1,7 +1,8 @@
-<!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>-->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" style="color:white;">User Manager</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+          aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarColor02">
@@ -24,10 +25,10 @@
           <!--          <div class="col-6">
                       <a href=""><img src="{{employee?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
                     </div>-->
-          <div class="col-6 card-title align-self-center mb-0">
-            <h5>{{user?.name}}</h5>
-            <p class="m-0">{{user?.name}}</p>
-          </div>
+          <!--    <div class="col-6 card-title align-self-center mb-0">
+                <h5>{{user?.id}}</h5>
+                <p class="m-0">{{user?.name}}</p>
+              </div>-->
         </div>
         <!--        <ul class="list-group list-group-flush">
                   <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{user?.email}}</a></li>
@@ -36,14 +37,16 @@
                   <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Password : <a href="#">{{user?.password}}</a></li>
                 </ul>-->
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{user?.email}}</a></li>
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Name : <a href="#">{{user?.name}}</a></li>
+          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : {{user?.email}}</li>
+          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Name : {{user?.name}}</li>
           <li class="list-group-item"><i class="fa fa-phone float-right"></i>Password : {{user?.password}}</li>
         </ul>
         <div class="card-body">
           <div class="float-right btn-group btn-group-sm">
-            <a (click)="onOpenModal('edit', user)" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-            <a (click)="onOpenModal('delete', user)" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+            <a (click)="onOpenModal('edit', user)" class="btn btn-primary tooltips" data-placement="top"
+               data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+            <a (click)="onOpenModal('delete', user)" class="btn btn-secondary tooltips" data-placement="top"
+               data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
           </div>
         </div>
       </div>
@@ -52,43 +55,40 @@
 
 
   <!-- Edit modal -->
-  <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="userEditModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="userEditModalLabel"
+       aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="updateUserModalLabel">Edit User {{editUser?.email}}</h5>
+          <h5 class="modal-title" id="updateUserModalLabel">Edit User {{editUser?.name}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <form #editForm="ngForm">
-            <!--     <div class="form-group">
-                   <label for="name">Name</label>
-                   <input type="text" ngModel="{{editEmployee?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
-                 </div>-->
-            <input type="hidden" ngModel="{{editUser?.userId}}" name="id" class="form-control" id="id" placeholder="Id">
-            <!--            <input type="hidden" ngModel="{{editEmployee?.employeeCode}}" name="userCode" class="form-control" id="userCode" placeholder="Email">-->
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" ngModel="{{editUser?.name}}" name="name" class="form-control" id="name"
+                     aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <input type="hidden" ngModel="{{editUser?.id}}" name="id" class="form-control" id="id" placeholder="Id">
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" ngModel="{{editUser?.email}}" name="email" class="form-control" id="email" placeholder="Email">
+              <input type="email" ngModel="{{editUser?.email}}" name="email" class="form-control" id="email"
+                     placeholder="Email">
             </div>
             <div class="form-group">
-              <label for="phone">Name</label>
-              <input type="text" ngModel="{{editUser?.name}}" name="name" class="form-control" id="jobTitle" placeholder="Job title">
+              <label for="password">Password</label>
+              <input type="text" ngModel="{{editUser?.password}}" name="password" class="form-control" id="password"
+                     name="password" placeholder="Password">
             </div>
-            <div class="form-group">
-              <label for="phone">Password</label>
-              <input type="text" ngModel="{{editUser?.password}}" name="password" class="form-control" id="phone" name="phone" placeholder="Phone">
+
+            <div class="modal-footer">
+              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+              <button (click)="onUpdateUser(editForm.value)" data-dismiss="modal" class="btn btn-primary">Save changes
+              </button>
             </div>
-            <!--            <div class="form-group">
-                          <label for="phone">Image URL</label>
-                          <input type="text" ngModel="{{editEmployee?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                          <button (click)="onUpdateUser(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
-                        </div>-->
           </form>
         </div>
       </div>
@@ -96,7 +96,8 @@
   </div>
 
   <!-- Delete modal -->
-  <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+  <div class="modal fade" id="deleteUserModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+       aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -109,7 +110,7 @@
           <p>Are you sure you want to delete employee {{deleteUser?.email}}?</p>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            <button (click)="onDeleteUser(deleteUser!.userId)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+            <button (click)="onDeleteUser(deleteUser!.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
           </div>
         </div>
       </div>
