@@ -28,7 +28,6 @@ export class LoginComponent {
     this.authService
       .login(credentials)
       .subscribe((response) => {
-        console.log(response.token)
         this.router.navigate(['/']);
       });
   }

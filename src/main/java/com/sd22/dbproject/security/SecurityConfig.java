@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .mvcMatchers("/api/auth/**").permitAll()
+                .mvcMatchers("/api/auth/**", "/api/trips/").permitAll()
                 //.mvcMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
