@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../user";
-import {UserService} from "../user.service";
+import {User} from "../../models/user";
+import {UserService} from "../../services/user.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-administrator',
   templateUrl: './administrator.component.html',
   styleUrls: ['./administrator.component.css']
 })
@@ -13,9 +14,10 @@ export class AdministratorComponent implements OnInit{
   public editUser: User | undefined;
   public deleteUser: User | undefined;
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private authService: AuthService){}
 
   ngOnInit() {
+    this.authService
     this.getUsers();
   }
 

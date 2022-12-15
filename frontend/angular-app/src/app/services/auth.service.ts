@@ -12,10 +12,12 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-
-  isLoggedIn = new BehaviorSubject(false);
+  private _isLoggedIn = new BehaviorSubject<boolean>(false);
+  isLoggedIn = this._isLoggedIn.asObservable();
 
   constructor(private http: HttpClient) {
+    const token = localStorage.getItem('token')
+    this._isLoggedIn.next(!!token);
   }
 
   login(credentials: { email: any; password: any; }): Observable<any> {
@@ -25,7 +27,7 @@ export class AuthService {
     }, httpOptions).pipe(
       tap((response: any) => {
         localStorage.setItem('token', response.token)
-        this.isLoggedIn.next(true);
+        this._isLoggedIn.next(true);
       })
     );
   }

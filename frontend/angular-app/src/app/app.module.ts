@@ -16,8 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './componets/login/login.component';
 import { SignupComponent } from './componets/signup/signup.component';
 import {ReactiveFormsModule} from "@angular/forms";
-/*import {AdminComponent} from "./app.AdminComponent";*/
-import {AdministratorComponent} from "./administrator/administrator.component";
+import {AdministratorComponent} from "./componets/administrator/administrator.component";
 import {FormsModule} from "@angular/forms";
 
 
@@ -29,15 +28,6 @@ import {FormsModule} from "@angular/forms";
     SignupComponent,
     AdministratorComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        MatMenuModule,
-        MatIconModule
-    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,9 +40,10 @@ import {FormsModule} from "@angular/forms";
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AdministratorComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
