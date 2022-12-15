@@ -16,6 +16,10 @@ import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './componets/login/login.component';
 import { SignupComponent } from './componets/signup/signup.component';
 import {ReactiveFormsModule} from "@angular/forms";
+/*import {AdminComponent} from "./app.AdminComponent";*/
+import {AdministratorComponent} from "./administrator/administrator.component";
+import {FormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -23,7 +27,17 @@ import {ReactiveFormsModule} from "@angular/forms";
     NavBarComponent,
     LoginComponent,
     SignupComponent,
+    AdministratorComponent
   ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatMenuModule,
+        MatIconModule
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,6 +53,6 @@ import {ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AdministratorComponent]
 })
 export class AppModule { }
