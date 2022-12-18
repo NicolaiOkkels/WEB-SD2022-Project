@@ -23,6 +23,7 @@ public class Trip {
     private String title;
     private String availability;
     private BigDecimal ratingTotal;
+    //private Boolean visibity = true;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonBackReference
@@ -54,6 +55,14 @@ public class Trip {
         this.reviews = reviews;
         this.tags = tags;
     }
+
+/*    public Boolean getVisibity() {
+        return visibity;
+    }
+
+    public void setVisibity(Boolean visibity) {
+        this.visibity = visibity;
+    }*/
 
     public int getId() {
         return id;
