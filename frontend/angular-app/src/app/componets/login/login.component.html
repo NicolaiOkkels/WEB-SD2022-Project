@@ -4,9 +4,11 @@
     <div>
       <div>
         <p>
-          <input formControlName="email" type="text" id="email" name="email" placeholder="Email" required><i class="validation"><span></span><span></span></i>
+          <input formControlName="email" type="email" id="email" name="email" placeholder="Email" required>
+          <i class="validation"><span></span><span></span></i>
         </p>
-        <span *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')">*Email is required</span>
+        <span *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required',
+         'email')">*Email is required</span>
       </div>
       <div>
         <p>

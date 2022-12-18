@@ -18,6 +18,7 @@ import { SignupComponent } from './componets/signup/signup.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AdministratorComponent} from "./componets/administrator/administrator.component";
 import {FormsModule} from "@angular/forms";
+import { HomeComponent } from './componets/home/home.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {FormsModule} from "@angular/forms";
     NavBarComponent,
     LoginComponent,
     SignupComponent,
-    AdministratorComponent
+    AdministratorComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

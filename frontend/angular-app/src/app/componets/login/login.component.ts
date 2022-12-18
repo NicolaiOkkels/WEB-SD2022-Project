@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 export class LoginComponent {
 
   loginForm = new FormGroup({
-    email: new FormControl(null, Validators.required),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, Validators.required)
   });
 
@@ -23,7 +23,8 @@ export class LoginComponent {
       return;
     }
 
-    const credentials = {email: this.loginForm.get('email')?.value, password: this.loginForm.get('password')?.value}
+    const credentials = {email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value}
 
     this.authService
       .login(credentials)

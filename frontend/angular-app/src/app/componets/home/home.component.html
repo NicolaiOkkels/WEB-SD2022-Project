@@ -2,7 +2,7 @@
 <nav-bar *ngIf="authService.isLoggedIn | async"></nav-bar>
 <div class="container" id="main-container">
   <div class="row">
-    <div *ngFor="let trip of trips" class="col-md-6 col-xl-3">
+    <!--<div *ngFor="let trip of trips" class="col-md-6 col-xl-3">
       <div class="card m-b-30">
         <div class="card-body row">
         </div>
@@ -12,7 +12,10 @@
           <li class="list-group-item"><i class="fa fa-phone float-right"></i>Password : {{trip?.rating}}</li>
         </ul>
       </div>
-    </div>
+    </div>-->
   </div>
 </div>
-<router-outlet></router-outlet>
+<div>
+  <input type="file" (change)="onFileSelected($event)">
+  <button type="button">Upload</button>
+</div>

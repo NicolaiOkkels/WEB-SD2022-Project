@@ -3,6 +3,9 @@ package com.sd22.dbproject.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,8 +19,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private int id;
+    @Email(message = "Invalid email address")
     private String email;
+
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")
     private String password;
+
+    @NotNull(message = "Name shouldn't be null")
     private String name;
 
     @ManyToMany
