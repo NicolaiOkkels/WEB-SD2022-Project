@@ -19,7 +19,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {AdministratorComponent} from "./componets/administrator/administrator.component";
 import {FormsModule} from "@angular/forms";
 import { HomeComponent } from './componets/home/home.component';
-
+import {AuthGuard} from "./services/auth.guard";
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { HomeComponent } from './componets/home/home.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

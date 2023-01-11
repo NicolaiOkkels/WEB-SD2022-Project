@@ -36,9 +36,9 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.cors().and().csrf()
-                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .and()
+        http.cors().and().csrf().disable()//.csrf()
+                //.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                //.and()
                 .exceptionHandling()
                 .authenticationEntryPoint(authEntryPoint)
                 .and()
@@ -46,8 +46,8 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .mvcMatchers("/api/auth/**", "/api/trips/").permitAll()
-                .antMatchers("api/csrf").permitAll()
+                .mvcMatchers("/api/auth/**", "/api/trips/**","/api/users/**").permitAll()
+                //.antMatchers("api/csrf").permitAll()
                 //.mvcMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

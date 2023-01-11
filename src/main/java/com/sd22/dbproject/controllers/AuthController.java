@@ -22,7 +22,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
-@RequestMapping("api/auth")
+@RequestMapping("/api/auth")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AuthController {
 
@@ -59,6 +59,7 @@ public class AuthController {
         User user = new User();
         user.setEmail(registerDto.getEmail());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
+        user.setName(registerDto.getName());
 
         Role role = roleService.findRoleByName("USER").get();
         Set<Role> userRoles = new HashSet<>();

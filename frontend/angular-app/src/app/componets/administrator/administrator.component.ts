@@ -3,6 +3,8 @@ import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
+import {BehaviorSubject, tap} from "rxjs";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-administrator',
@@ -14,10 +16,11 @@ export class AdministratorComponent implements OnInit{
   public editUser: User | undefined;
   public deleteUser: User | undefined;
 
+  public isLoggedIn = this.authService.isLoggedIn
+
   constructor(private userService: UserService, private authService: AuthService){}
 
   ngOnInit() {
-    this.authService
     this.getUsers();
   }
 

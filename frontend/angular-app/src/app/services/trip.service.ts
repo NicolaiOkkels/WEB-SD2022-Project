@@ -16,7 +16,7 @@ export class TripService{
     return this.http.get<Trip[]>(`${this.apiServerUrl}/api/trips/`)
   }
 
-  public addTrip(trip: Trip): Observable<Trip>{
+  public addTrip(trip: { duration: StringConstructor | null | undefined; price: NumberConstructor | null | undefined; rating: number; description: StringConstructor | null | undefined; availability: StringConstructor | null | undefined; title: StringConstructor | null | undefined }): Observable<Trip>{
     return this.http.post<Trip>(`${this.apiServerUrl}/api/trips/add`, trip);
   }
 }

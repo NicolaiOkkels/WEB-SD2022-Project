@@ -1,18 +1,49 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
-<nav-bar *ngIf="authService.isLoggedIn | async"></nav-bar>
-<div class="container" id="main-container">
-  <div class="row">
-    <div *ngFor="let trip of trips" class="col-md-6 col-xl-3">
-      <div class="card m-b-30">
-        <div class="card-body row">
+<app-login *ngIf="!(isLoggedIn | async)"></app-login>
+<div *ngIf="(isLoggedIn | async)">
+  <nav-bar></nav-bar>
+  <div class="container" id="main-container">
+    <div class="row">
+      <div *ngFor="let trip of trips" class="col-md-6 col-xl-3">
+        <div class="card2 m-b-30">
+          <div class="card-body row">
+          </div>
+          <ul class="list-group list-group-flush">
+            <img mat-card-image src="../assets/default_travel.png"
+            />
+            <li class="list-group-item">{{trip?.title}}</li>
+            <li class="list-group-item">Description: {{trip?.description}}</li>
+            <li class="list-group-item">Price: {{trip?.price}}</li>
+            <li class="list-group-item">Rating: {{trip?.ratingTotal}}</li>
+            <a type="button">REVIEW<li class="list-group-item"></li></a>
+          </ul>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{trip?.title}}</li>
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{trip?.price}}</li>
-          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Password : {{trip?.rating}}</li>
-        </ul>
       </div>
     </div>
   </div>
+  <form>
+    <div class="container" [formGroup]="tripForm" id="main-container2">
+      <ul class="list-group list-group-flush">
+        <div>
+          <input type="text" class="list-group-item" placeholder="Enter title" name="title" id="title" formControlName="title">
+        </div>
+        <div>
+          <input type="text" class="list-group-item" placeholder="Enter description" name="description" id="description" formControlName="description">
+        </div>
+        <div>
+          <input type="number" class="list-group-item" placeholder="Enter title" name="price" id="price" formControlName="price">
+        </div>
+        <div>
+          <input type="text" class="list-group-item" placeholder="Enter duration" name="duration" id="duration" formControlName="duration">
+        </div>
+        <div>
+          <input type="text" class="list-group-item" placeholder="Enter availability" name="availability" id="availability" formControlName="availability">
+        </div>
+        <div>
+          <button (click)="submitForm()" type="submit">Create trip</button>
+        </div>
+      </ul>
+    </div>
+  </form>
 </div>
 <router-outlet></router-outlet>

@@ -9,9 +9,11 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  selectedFile = null;
-  constructor(public authService: AuthService, private http: HttpClient) {}
+  //selectedFile = null;
 
+  public isLoggedIn = this.authService.isLoggedIn
+  constructor(public authService: AuthService) {}
+/*
   onFileSelected(event: any){
     this.selectedFile = event.taget.files[0];
   }
@@ -20,5 +22,5 @@ export class HomeComponent {
     const data = new FormData();
     //data.append('image', this)
     //this.http.post()
-  }
+  }*/
 }

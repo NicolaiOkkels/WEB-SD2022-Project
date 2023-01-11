@@ -1,21 +1,21 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
-<nav-bar *ngIf="authService.isLoggedIn | async"></nav-bar>
-<div class="container" id="main-container">
-  <div class="row">
-    <!--<div *ngFor="let trip of trips" class="col-md-6 col-xl-3">
-      <div class="card m-b-30">
-        <div class="card-body row">
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{trip?.title}}</li>
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{trip?.price}}</li>
-          <li class="list-group-item"><i class="fa fa-phone float-right"></i>Password : {{trip?.rating}}</li>
-        </ul>
-      </div>
-    </div>-->
+<div *ngIf="(isLoggedIn | async)">
+  <nav-bar></nav-bar>
+  <div class="container" id="main-container">
+    <div class="row">
+          </div>
+          <ul class="list-group list-group-flush">
+            <div>
+              <input type="text" class="list-group-item" placeholder="Enter title" name="title">
+            </div>
+            <div>
+            </div>
+            <li class="list-group-item">Review</li>
+            <a type="button">REVIEW<li class="list-group-item"></li></a>
+          </ul>
+    </div>
   </div>
-</div>
-<div>
-  <input type="file" (change)="onFileSelected($event)">
-  <button type="button">Upload</button>
-</div>
+<router-outlet></router-outlet>
+
+private String title;
+private int rating;
+private String text;
